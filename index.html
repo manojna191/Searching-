@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width , initial-scale=1, shrink-to-fit=no"> 
+	<link rel = "stylesheet"  href = "https://fonts.googleapis.com/icon?family=Material+Icons">  
+    <link rel = "stylesheet"  href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">  
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"> </script>             
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>  
+	<title>Filterable content</title>
+</head>
+<body>
+	<div class="container">
+		<h1 class="align-center"> My Contacts</h1>
+		<input type="text" id = "filterinput" placeholder="Search names .....">
+		<ul id = "names" class="collection with-header">
+		<li class="collection-header">
+			<h5>A</h5>
+		</li>
+		<li class="collection-item">
+			<a href="#">Aman</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Aditya</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Anisha</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Achintya</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Anas</a>
+		</li>
+		<li class="collection-header">
+			<h5>B</h5>
+		</li>
+		<li class="collection-item">
+			<a href="#">Bhanu</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Bhavya</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Bhavesh</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Bharat</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Bheem</a>
+		</li>	
+		<li class="collection-header">
+			<h5>C</h5>
+		</li>
+		<li class="collection-item">
+			<a href="#">Cimon</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Charlie</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Charchit</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Carrylie</a>
+		</li>
+		<li class="collection-item">
+			<a href="#">Cat</a>
+		</li>		
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		//GET INPUT ELEMENT
+		let filterinput = document.getElementById('filterinput');
+		//ADD EVENT LISTENER
+		filterinput.addEventListener('keyup', filterNames);
+
+		function filterNames(){
+			//get value of input 
+			let filtervalue = document.getElementById('filterinput').value.toUpperCase();
+			//get names ul
+			let ul = document.getElementById('names');
+			//get lis from ul
+			let li = ul.querySelectorAll('li.collection-item');
+
+			//loop through colection.item lis
+			for(let i = 0; i < li.length; i++){
+				let a = li[i].getElementsByTagName('a')[0];
+				console.log(a);
+				console.log(li[i]);
+				//if matches
+				if(a.innerHTML.toUpperCase().indexOf(filtervalue) > -1){
+					li[i].style.display = '';
+				}else{
+					li[i].style.display = 'none'; 
+				}
+			}
+		}
+	</script>
+</body>
+</html>
